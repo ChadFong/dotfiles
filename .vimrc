@@ -8,7 +8,7 @@ filetype off                  " required
         set rtp+=C:/Users/cmfong/vimfiles/bundle/Vundle.vim/
         call vundle#begin('C:/Users/cmfong/vimfiles/bundle')
     elseif has('mac') || has('macunix')
-        set rtp+=~/vim/bundle/Vundle.vim
+        set rtp+=~/.vim/bundle/Vundle.vim
         call vundle#begin()
     endif
 
@@ -34,6 +34,17 @@ filetype off                  " required
 
     call vundle#end()
     filetype plugin indent on
+
+" netrw settings
+"    let g:netrw_banner = 0
+"    let g:netrw_liststyle = 3
+"    let g:netrw_browse_split = 4
+"    let g:netrw_altv = 1
+"    let g:netrw_winsize = 25
+"    augroup ProjectDrawer
+"        autocmd!
+"        autocmd VimEnter * :Vexplore
+"    augroup END
 
 " Begin Leader Functions
     let mapleader="\<Space>"
