@@ -16,13 +16,12 @@ filetype off                  " required
         Plugin 'VundleVim/Vundle.vim'
 
     " Add Vundle packages here:
-        "Plugin 'scrooloose/nerdtree'
+        Plugin 'scrooloose/nerdtree'
         Plugin 'tpope/vim-sensible'
         Plugin 'tpope/vim-surround'
         Plugin 'tpope/vim-ragtag'
         Plugin 'jnurmine/Zenburn'
         Plugin 'tomtom/tcomment_vim'
-        "Plugin 'christoomey/vim-tmux-navigator'
 
     " Typescript Plugins and Settings
         Plugin 'shougo/vimproc.vim'
@@ -35,33 +34,11 @@ filetype off                  " required
     call vundle#end()
     filetype plugin indent on
 
-" netrw settings
-"    let g:netrw_banner = 0
-"    let g:netrw_liststyle = 3
-"    let g:netrw_browse_split = 4
-"    let g:netrw_altv = 1
-"    let g:netrw_winsize = 25
-"    augroup ProjectDrawer
-"        autocmd!
-"        autocmd VimEnter * :Vexplore
-"    augroup END
-
 " Begin Leader Functions
     let mapleader="\<Space>"
     nmap <leader>trail :%s/\s\+$//e<Enter>
 
 " Begin Custom Config
-
-    " netrw config
-        let g:netrw_banner = 0
-        let g:netrw_liststyle = 3
-        let g:netrw_browse_split = 4
-        let g:netrw_altv = 1
-        let g:netrw_winsize = 25
-        augroup ProjectDrawer
-          autocmd!
-            autocmd VimEnter * :Vexplore
-        augroup END
 
     filetype plugin indent on
     set tabstop=4
@@ -93,6 +70,21 @@ filetype off                  " required
 
     nnoremap <LEADER>_ :call Fold_file()<CR>
     nnoremap <LEADER>- :call Unfold_file()<CR>
+
+" NerdTree configs
+    " autocmd StdinReadPre * let s:std_in=1
+    " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+    " Ctrl + n to toggle NerdTree
+    map <C-n> :NERDTreeToggle<CR>
+
+    " Open with "vim <path>"
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+    " Close if NERDTree is last pane open
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 
 " Tmux Vim navigation: Manual Implementation
     if exists('$TMUX')
