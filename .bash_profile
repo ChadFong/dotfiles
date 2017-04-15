@@ -1,18 +1,16 @@
 # System Specific config
-source ~/.bashrc
-
 source ~/.git-prompt.sh
 
 PS1="\W\$(__git_ps1)\$ "
 
-if hash vim 2>/dev/null; then
-    alias editor=vim
+if hash nvim 2>/dev/null; then
+    alias editor=nvim
 else
     echo "Default editor not on $PATH"
 fi
 
 # .dotfile shortcuts
-alias vimrc="editor ~/.vimrc"
+alias vimrc="editor ~/.config/nvim/init.vim"
 alias prof="editor ~/.bash_profile"
 alias runprof=". ~/.bash_profile"
 
