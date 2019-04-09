@@ -16,27 +16,8 @@ alias vimrc="editor ~/.vimrc"
 alias prof="editor ~/.bash_profile"
 alias runprof=". ~/.bash_profile"
 
-
-# Git shortcuts:  Refer to ~/.gitconfig
-gs () { git status; }
-
-ga () { git add $1; }
-
-gc () { git commit $1 $2; }
-
-gd () { git diff $1; }
-
-gb () { git branch $1 $2; }
-
-gco () { git checkout $1 $2; }
-
-gcob () { git checkout -b $1 $2; }
-
-gh () { git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short; }
-
-gpull () { git pull $1 $2 $3; }
-
-gpush () { git push $1 $2 $3; }
+# Aliases:
+alias g="git"
 
 # Bash-completion
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
@@ -49,4 +30,3 @@ if [ -f ~/.git-completion.bash ]; then
   # Add git completion to aliases
   __git_complete gco _git_checkout
 fi
-
